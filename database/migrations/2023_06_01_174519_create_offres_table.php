@@ -15,7 +15,18 @@ class CreateOffresTable extends Migration
     {
         Schema::create('offres', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('categorie_id')->unsigned();
+            $table->string('nom')->nullable();
+            $table->string('description')->nullable();
+            $table->string('mission')->nullable();
+            $table->string('profil')->nullable();
+            $table->string('dossier')->nullable();
+            $table->string('lien')->nullable();
+            $table->string('lieu')->nullable();
+            $table->string('libelle')->nullable();
+            $table->string('date_lim')->nullable();
             $table->timestamps();
+            $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

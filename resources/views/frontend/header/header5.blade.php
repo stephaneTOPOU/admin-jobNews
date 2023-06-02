@@ -1,0 +1,1 @@
+<link rel="stylesheet" href="{{ asset('vendors/themify-icons/css/themify-icons.css') }}">

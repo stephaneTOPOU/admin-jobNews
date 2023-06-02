@@ -1,0 +1,4 @@
+@yield('javascripts')
+</body>
+
+</html>

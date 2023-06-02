@@ -1,0 +1,1 @@
+<script src="{{ asset('vendors/jqvmap/dist/jquery.vmap.min.js') }}"></script>

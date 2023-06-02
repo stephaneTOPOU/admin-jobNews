@@ -1,0 +1,1 @@
+<script src="{{ asset('vendors/popper.js/dist/umd/popper.min.js') }}"></script>

@@ -1,0 +1,1 @@
+<script src="{{ asset('vendors/chart.js/dist/Chart.bundle.min.js') }}"></script>
