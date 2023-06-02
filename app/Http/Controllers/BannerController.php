@@ -14,7 +14,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        return view('frontend.banner.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        //
+        return view('frontend.banner.add');
     }
 
     /**

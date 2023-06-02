@@ -17,7 +17,7 @@
                 <h3 class="menu-title">Bannières & Sliders</h3><!-- /.menu-title -->
                 
                 <li>
-                    <a href="widgets.html"> <i class="menu-icon fa fa-picture-o"></i>Bannière </a>
+                    <a href="{{ route('banner.index') }}"> <i class="menu-icon fa fa-picture-o"></i>Bannière </a>
                 </li>
                 <li>
                     <a href="widgets.html"> <i class="menu-icon fa fa-picture-o"></i>Slider1 </a>
