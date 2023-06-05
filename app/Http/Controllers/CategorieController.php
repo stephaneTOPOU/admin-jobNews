@@ -14,7 +14,7 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
+        return view('frontend.categorie.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        //
+        return view('frontend.categorie.add');
     }
 
     /**

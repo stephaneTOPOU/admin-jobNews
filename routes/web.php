@@ -5,7 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\Slider1Controller;
 use App\Http\Controllers\Slider2Controller;
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\OffreController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +28,6 @@ Route::get('/', HomeController::class)->name('home');
 Route::resource('/banner', BannerController::class);
 Route::resource('/slider1', Slider1Controller::class);
 Route::resource('/slider2', Slider2Controller::class);
+Route::resource('/categorie', CategorieController::class);
 Route::resource('/offre', OffreController::class);
+Route::resource('/user', UserController::class);

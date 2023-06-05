@@ -22,34 +22,13 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong>Ajouter</strong> images 
+                            <strong>Ajouter</strong> catégorie
                         </div>
                         <div class="card-body card-block">
-                            <form
-                                action=""
-                                method="post"
-                                enctype="multipart/form-data"
-                                class="form-horizontal"
-                            >
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label
-                                            for="file-multiple-input"
-                                            class="form-control-label"
-                                            >Choisir image</label
-                                        >
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input
-                                            type="file"
-                                            id="file-multiple-input"
-                                            name="file-multiple-input"
-                                            multiple=""
-                                            class="form-control-file"
-                                        />
-                                    </div>
-                                </div>
-                            </form>
+                            <div class="card-body card-block">
+                                <form action="" method="post" class="">
+                                    <div class="form-group col-md-12"><label for="text-input" class=" form-control-label"><strong>Catégorie</strong></label><input type="text" id="text-input" name="text-input" placeholder="Enter le nom de la catégorie.." class="form-control"></div>                       
+                            </div>
                         </div>
                         <div class="card-footer">
                             <button

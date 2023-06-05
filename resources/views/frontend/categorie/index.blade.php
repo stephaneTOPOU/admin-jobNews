@@ -25,10 +25,10 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <strong class="card-title">Offres</strong>
+                                    <strong class="card-title">Categorie</strong>
                                 </div>
                                 <div class="col-md-2">
-                                    <a href="{{ route('offre.create')}}" type="button" class="btn btn-block btn-success">Ajouter</a>
+                                    <a href="{{ route('categorie.create')}}" type="button" class="btn btn-block btn-success">Ajouter</a>
                                 </div>
                             </div>
                             
@@ -38,19 +38,13 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Entreprise</th>
-                                        <th>Titre</th>
-                                        <th>Description</th>
-                                        <th>Date limite</th>
+                                        <th>Nom</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>System Architect</td>
-                                        <td>System Architect</td>
                                         <td>System Architect</td>
                                         <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp; Modifier</button>
                                             <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>

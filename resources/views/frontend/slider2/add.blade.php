@@ -54,10 +54,10 @@
                         <div class="card-footer">
                             <button
                                 type="submit"
-                                class="btn btn-primary btn-sm"
+                                class="btn btn-success btn-sm"
                             >
                                 <i class="fa fa-dot-circle-o"></i>
-                                Modifier
+                                Ajouter
                             </button>
                             <button
                                 type="reset"
