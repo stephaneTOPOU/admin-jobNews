@@ -22,7 +22,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong>Ajouter</strong> bannière 
+                            <strong>Ajouter</strong> images 
                         </div>
                         <div class="card-body card-block">
                             <form

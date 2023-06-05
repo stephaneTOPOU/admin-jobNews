@@ -14,7 +14,7 @@ class OffreController extends Controller
      */
     public function index()
     {
-        //
+        return view('frontend.offre.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class OffreController extends Controller
      */
     public function create()
     {
-        //
+        return view('frontend.offre.add');
     }
 
     /**

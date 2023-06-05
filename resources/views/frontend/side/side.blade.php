@@ -5,8 +5,8 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
-            <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+            <a class="navbar-brand" href="./"><img src="{{ asset('images/logo.png')}}" alt="Logo"></a>
+            <a class="navbar-brand hidden" href="./"><img src="{{ asset('images/logo2.png')}}" alt="Logo"></a>
         </div>
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -20,14 +20,14 @@
                     <a href="{{ route('banner.index') }}"> <i class="menu-icon fa fa-picture-o"></i>Bannière </a>
                 </li>
                 <li>
-                    <a href="widgets.html"> <i class="menu-icon fa fa-picture-o"></i>Slider1 </a>
+                    <a href="{{ route('slider1.index') }}"> <i class="menu-icon fa fa-picture-o"></i>Slider1 </a>
                 </li>
                 <li>
-                    <a href="widgets.html"> <i class="menu-icon fa fa-picture-o"></i>Slider2 </a>
+                    <a href="{{ route('slider2.index')}}"> <i class="menu-icon fa fa-picture-o"></i>Slider2 </a>
                 </li>
                 <h3 class="menu-title">Offres</h3>
                 <li>
-                    <a href="widgets.html"> <i class="menu-icon fa fa-folder"></i>Offres </a>
+                    <a href="{{ route('offre.index')}}"> <i class="menu-icon fa fa-folder"></i>Offres </a>
                 </li>
                 <h3 class="menu-title">Paramètre</h3>
                 <li>

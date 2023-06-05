@@ -14,7 +14,7 @@ class Slider2Controller extends Controller
      */
     public function index()
     {
-        //
+        return view('frontend.slider2.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class Slider2Controller extends Controller
      */
     public function create()
     {
-        //
+        return view('frontend.slider2.add');
     }
 
     /**
