@@ -25,13 +25,24 @@
                             <strong>Ajouter</strong> images 
                         </div>
                         <div class="card-body card-block">
+                            @if (Session::has('success'))
+                            <div class="col-sm-12">
+                                <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                                    <span class="badge badge-pill badge-success">Success</span> {{ Session::get('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                            @endif
                             <form
-                                action=""
+                                action="{{ route('slider2.store') }}"                             
                                 method="post"
                                 enctype="multipart/form-data"
                                 class="form-horizontal"
                             >
-                                <div class="row form-group">
+                            @csrf
+                                {{-- <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label
                                             for="file-multiple-input"
@@ -43,29 +54,48 @@
                                         <input
                                             type="file"
                                             id="file-multiple-input"
-                                            name="file-multiple-input"
-                                            multiple=""
+                                            name="image"
+                                            multiple="images"
+                                            class="form-control-file"
+                                        />
+                                    </div>
+                                </div> --}}
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label
+                                            for="file-input"
+                                            class="form-control-label"
+                                            >Sélectionner une image</label
+                                        >
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input
+                                            type="file"
+                                            id="file-input"
+                                            name="image"
                                             class="form-control-file"
                                         />
                                     </div>
                                 </div>
+                                <div class="card-footer">
+                                    <button
+                                        type="submit"
+                                        class="btn btn-success btn-sm"
+                                    >
+                                        <i class="fa fa-dot-circle-o"></i>
+                                        Ajouter
+                                    </button>
+                                    <button
+                                        type="reset"
+                                        onclick="windows.location='{{ URL::previous() }}'"
+                                        class="btn btn-danger btn-sm"
+                                    >
+                                        <i class="fa fa-ban"></i> Annuler
+                                    </button>
+                                </div>
                             </form>
-                        </div>
-                        <div class="card-footer">
-                            <button
-                                type="submit"
-                                class="btn btn-success btn-sm"
-                            >
-                                <i class="fa fa-dot-circle-o"></i>
-                                Ajouter
-                            </button>
-                            <button
-                                type="reset"
-                                class="btn btn-danger btn-sm"
-                            >
-                                <i class="fa fa-ban"></i> Annuler
-                            </button>
-                        </div>
+                        </div>                        
                     </div>
                 </div>
 
@@ -75,3 +105,11 @@
     </div>
     <!-- .content -->
 </div>
+@include('frontend.footer.footer1')
+@include('frontend.footer.footer2')
+<script src="vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+@include('frontend.footer.footer3')
+@include('frontend.footer.footer4')
+@include('frontend.footer.footer12')
+

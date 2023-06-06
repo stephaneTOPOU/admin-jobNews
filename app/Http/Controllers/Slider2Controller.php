@@ -35,7 +35,24 @@ class Slider2Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {
+            $data = $request->validate([
+                'image' => 'required|file'
+            ]);
+            
+            try {
+                $data = new slider2();
+                if ($request->image){
+                    $filename = time().rand(1,50).'.'.$request->image->extension();
+                    $img = $request->file('image')->storeAs('slider', $filename, 'public');
+                    $data->image = $img;
+                    $data->save();
+                    return redirect()->back()->with('success','Nouvelle image ajoutée avec succes');
+                }
+            } catch (Exception $e) {
+                return redirect()->back()->with('success',$e->getMessage());
+            }
+        }
     }
 
     /**

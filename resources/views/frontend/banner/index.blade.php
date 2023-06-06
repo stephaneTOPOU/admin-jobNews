@@ -43,13 +43,75 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($banners as $banner)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp; Modifier</button>
-                                            <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
+                                        <td>{{ $banner->id }}</td>
+                                        <td><img src="{{ asset('assets') }}/{{ $banner->image }}" alt="" width="60"></td>
+                                        <td>
+                                            <a href="{{ route('banner.edit', $banner->id) }}" type="button" class="btn btn-primary" style="color : white"><i class="fa fa-edit"></i>&nbsp; Modifier</a>
+                                            {{-- <form action="{{ route('banner.destroy',$banner->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
+                                            </form> --}}
+
+                                            <button type="submit" class="btn btn-danger" onclick="deleteData({{ $banner->id }})" data-id="{{ $banner->id }}" data-target="#default{{ $banner->id }}"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
+                                            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                                            <script>
+
+                                                            function deleteData(id) {
+
+                                                                let table = $('#bootstrap-data-table-export');
+
+                                                                Swal.fire({
+                                                                title: 'Etes-vous sûr?',
+                                                                text: "Vous ne pourrez pas revenir en arrière!",
+                                                                icon: 'warning',
+                                                                showCancelButton: true,
+                                                                confirmButtonColor: '#3085d6',
+                                                                cancelButtonColor: '#d33',
+                                                                confirmButtonText: 'Oui, supprimez!'
+                                                                }).then((result) => {
+                                                                if (result.isConfirmed) {
+
+                                                                    //let url = "{{ route('banner.destroy',['banner' => $banner->id]) }}"
+                                                                    let url = "{{url('banner')}}/" + id
+                                                                    window.location.reload();
+
+                                                                    console.log(url);
+                                                                    $.ajax({
+                                                                        type: 'POST',
+                                                                        url: url,
+                                                                        data: {
+                                                                        _method: 'DELETE',
+                                                                        _token: "{{ csrf_token() }}",
+                                                                        banner: id                                                                  
+                                                                        },
+                                                                        
+                                                                        success: function () {
+                                                                        Swal.fire(
+                                                                            'Supprimé!',
+                                                                            'La présentation a été supprimée.',
+                                                                            'success'
+                                                                        )
+                                                                        table.dataTable({ ajax: "data.json"}).ajax.reload();
+                                                                        
+                                                                    },
+
+                                                                        error: function(){
+                                                                            alert('error');
+                                                                        },
+                                                                    })
+                                                                }
+
+                                                            });
+
+                                                            }
+                                                            
+                                                            </script>
                                         </td>
                                     </tr>
+                                    @endforeach                                 
                                 </tbody>
                             </table>
                         </div>

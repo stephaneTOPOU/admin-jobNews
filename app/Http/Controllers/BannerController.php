@@ -14,7 +14,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        return view('frontend.banner.index');
+        $banners = Banner::all();
+        return view('frontend.banner.index', compact('banners'));
     }
 
     /**
@@ -35,7 +36,22 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'image' => 'required|file'
+        ]);
+        
+        try {
+            $data = new banner();
+            if ($request->image){
+                $filename = time().rand(1,50).'.'.$request->image->extension();
+                $img = $request->file('image')->storeAs('banner', $filename, 'public');
+                $data->image = $img;
+                $data->save();
+                return redirect()->back()->with('success','Nouvelle image ajoutée avec succes');
+            }
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 
     /**
@@ -55,9 +71,10 @@ class BannerController extends Controller
      * @param  \App\Models\Banner  $banner
      * @return \Illuminate\Http\Response
      */
-    public function edit(Banner $banner)
+    public function edit($banner)
     {
-        //
+        $banners = Banner::find($banner);
+        return view('frontend.banner.update', compact('banners'));
     }
 
     /**
@@ -67,9 +84,24 @@ class BannerController extends Controller
      * @param  \App\Models\Banner  $banner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Banner $banner)
+    public function update(Request $request, $banner)
     {
-        //
+        $data = $request->validate([
+            'image' => 'required|file'
+        ]);
+        
+        try {
+            $data = Banner::find($banner);
+            if ($request->image){
+                $filename = time().rand(1,50).'.'.$request->image->extension();
+                $img = $request->file('image')->storeAs('banner', $filename, 'public');
+                $data->image = $img;
+                $data->update();
+                return redirect()->back()->with('success','Nouvelle image ajoutée avec succes');
+            }
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 
     /**
@@ -80,6 +112,11 @@ class BannerController extends Controller
      */
     public function destroy(Banner $banner)
     {
-        //
+        try {
+            $banner->delete();
+            return redirect()->back()->with('success','Image supprimée avec succes');
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 }
