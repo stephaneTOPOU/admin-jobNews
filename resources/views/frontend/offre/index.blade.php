@@ -46,16 +46,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($offre as $offres )
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp; Modifier</button>
+                                        <td>{{ $offres->identifiant }}</td>
+                                        <td>{{ $offres->entreprise }}</td>
+                                        <td>{{ $offres->titre }}</td>
+                                        <td>{{ $offres->description }}</td>
+                                        <td>{{ $offres->date_lim }}</td>
+                                        <td>
+                                            <a href="{{ route('offre.edit', $offres->identifiant) }}" type="button" class="btn btn-primary" style="color: white"><i class="fa fa-edit"></i>&nbsp; Modifier</a>
                                             <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

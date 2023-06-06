@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offre;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OffreController extends Controller
 {
@@ -14,7 +16,11 @@ class OffreController extends Controller
      */
     public function index()
     {
-        return view('frontend.offre.index');
+        $offre = DB::table('categories')
+        ->join('offres', 'categories.id', '=', 'offres.categorie_id')
+        ->select('*', 'offres.id as identifiant')
+        ->get();
+        return view('frontend.offre.index', compact('offre'));
     }
 
     /**
@@ -24,7 +30,8 @@ class OffreController extends Controller
      */
     public function create()
     {
-        return view('frontend.offre.add');
+        $categorie = Categorie::all();
+        return view('frontend.offre.add', compact('categorie'));
     }
 
     /**
@@ -35,7 +42,36 @@ class OffreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'categorie_id' => 'required|integer',
+            'entreprise' => 'required|string',
+            'titre' => 'required|string',
+            'description' => 'required|string',
+            'mission' => 'required|string',
+            'profil' => 'required|string',
+            'dossier' => 'required|string',
+            'lien' => 'required|string',
+            'lieu' => 'required|string',
+            'date_limite' => 'required|string',
+        ]);
+
+        try {
+            $data = new Offre();
+            $data->categorie_id = $request->categorie_id;
+            $data->entreprise = $request->entreprise;
+            $data->titre = $request->titre;
+            $data->description = $request->description;
+            $data->mission = $request->mission;
+            $data->profil = $request->profil;
+            $data->dossier = $request->dossier;
+            $data->lien = $request->lien;
+            $data->lieu = $request->lieu;
+            $data->date_lim = $request->date_limite;
+            $data->save();
+            return redirect()->back()->with('success','Offre ajouté avec succes');
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 
     /**
@@ -55,9 +91,11 @@ class OffreController extends Controller
      * @param  \App\Models\Offre  $offre
      * @return \Illuminate\Http\Response
      */
-    public function edit(Offre $offre)
+    public function edit($offre)
     {
-        //
+        $categorie = Categorie::all();
+        $offres = Offre::find($offre);
+        return view('frontend.offre.update', compact('categorie', 'offres'));
     }
 
     /**
