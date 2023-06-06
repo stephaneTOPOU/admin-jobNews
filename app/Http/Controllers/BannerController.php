@@ -41,7 +41,7 @@ class BannerController extends Controller
         ]);
         
         try {
-            $data = new banner();
+            $data = new Banner();
             if ($request->image){
                 $filename = time().rand(1,50).'.'.$request->image->extension();
                 $img = $request->file('image')->storeAs('banner', $filename, 'public');
