@@ -15,9 +15,11 @@
 
     @include('frontend.head.head')
     @include('frontend.head.head2')
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.5.1/sweetalert2.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.5.1/sweetalert2.all.min.js"></script>
+    
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
