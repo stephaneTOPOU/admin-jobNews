@@ -46,10 +46,10 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>System Architect</td>
-                                        <td>System Architect</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                         <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp; Modifier</button>
                                             <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
                                         </td>
