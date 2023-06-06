@@ -30,8 +30,7 @@
                                 <div class="col-md-2">
                                     <a href="{{ route('slider2.create')}}" type="button" class="btn btn-block btn-success">Ajouter</a>
                                 </div>
-                            </div>
-                            
+                            </div>    
                         </div>
                         <div class="card-body">
                             <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -43,20 +42,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($slider as $slider2 )
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp; Modifier</button>
+                                        <td>{{ $slider2->id }}</td>
+                                        <td><img src="{{ asset('assets') }}/{{ $slider2->image }}" alt="" width="60"></td>
+                                        <td><a href="{{ route('slider2.edit', $slider2->id)}}" type="button" class="btn btn-primary" style="color: white"><i class="fa fa-edit"></i>&nbsp; Modifier</a>
                                             <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div><!-- .animated -->
     </div>

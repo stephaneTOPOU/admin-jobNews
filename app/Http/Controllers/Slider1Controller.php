@@ -14,7 +14,8 @@ class Slider1Controller extends Controller
      */
     public function index()
     {
-        return view('frontend.slider1.index');
+        $slider = Slider1::all();
+        return view('frontend.slider1.index', compact('slider'));
     }
 
     /**
@@ -72,9 +73,10 @@ class Slider1Controller extends Controller
      * @param  \App\Models\Slider1  $slider1
      * @return \Illuminate\Http\Response
      */
-    public function edit(Slider1 $slider1)
+    public function edit($slider1)
     {
-        //
+        $slider = Slider1::find($slider1);
+        return view('frontend.slider1.update', compact('slider'));
     }
 
     /**
@@ -84,9 +86,24 @@ class Slider1Controller extends Controller
      * @param  \App\Models\Slider1  $slider1
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Slider1 $slider1)
+    public function update(Request $request, $slider1)
     {
-        //
+        $data = $request->validate([
+            'image' => 'required|file'
+        ]);
+        
+        try {
+            $data = Slider1::find($slider1);
+            if ($request->image){
+                $filename = time().rand(1,50).'.'.$request->image->extension();
+                $img = $request->file('image')->storeAs('slider', $filename, 'public');
+                $data->image = $img;
+                $data->update();
+                return redirect()->back()->with('success','Image modifiée avec succes');
+            }
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 
     /**
@@ -97,6 +114,11 @@ class Slider1Controller extends Controller
      */
     public function destroy(Slider1 $slider1)
     {
-        //
+        try {
+            $slider1->delete();
+            return redirect()->back()->with('success','Image supprimée avec succes');
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 }

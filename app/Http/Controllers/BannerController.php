@@ -97,7 +97,7 @@ class BannerController extends Controller
                 $img = $request->file('image')->storeAs('banner', $filename, 'public');
                 $data->image = $img;
                 $data->update();
-                return redirect()->back()->with('success','Nouvelle image ajoutée avec succes');
+                return redirect()->back()->with('success','Image modifiée avec succes');
             }
         } catch (Exception $e) {
             return redirect()->back()->with('success',$e->getMessage());

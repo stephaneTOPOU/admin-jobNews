@@ -25,32 +25,52 @@
                             <strong>Ajouter</strong> catégorie
                         </div>
                         <div class="card-body card-block">
-                            <div class="card-body card-block">
-                                <form action="" method="post" class="">
-                                    <div class="form-group col-md-12"><label for="text-input" class=" form-control-label"><strong>Catégorie</strong></label><input type="text" id="text-input" name="text-input" placeholder="Enter le nom de la catégorie.." class="form-control"></div>                       
+                            @if (Session::has('success'))
+                            <div class="col-sm-12">
+                                <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                                    <span class="badge badge-pill badge-success">Success</span> {{ Session::get('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            <button
-                                type="submit"
-                                class="btn btn-success btn-sm"
+                            @endif
+                            <form 
+                                action="{{ route('categorie.store') }}" 
+                                method="post" 
+                                class=""
                             >
-                                <i class="fa fa-dot-circle-o"></i>
-                                Ajouter
-                            </button>
-                            <button
-                                type="reset"
-                                class="btn btn-danger btn-sm"
-                            >
-                                <i class="fa fa-ban"></i> Annuler
-                            </button>
-                        </div>
+                            @csrf
+                                <div class="form-group col-md-12"><label for="text-input" class=" form-control-label"><strong>Catégorie</strong></label><input type="text" id="text-input" name="nom" placeholder="Enter le nom de la catégorie.." class="form-control"></div>   
+                                <div class="card-footer">
+                                    <button
+                                        type="submit"
+                                        class="btn btn-success btn-sm"
+                                    >
+                                        <i class="fa fa-dot-circle-o"></i>
+                                        Ajouter
+                                    </button>
+                                    <button
+                                        type="reset"
+                                        class="btn btn-danger btn-sm"
+                                    >
+                                        <i class="fa fa-ban"></i> Annuler
+                                    </button>
+                                </div>
+                            </form>                    
+                        </div>  
                     </div>
                 </div>
-
             </div>
         </div>
         <!-- .animated -->
     </div>
     <!-- .content -->
 </div>
+@include('frontend.footer.footer1')
+@include('frontend.footer.footer2')
+<script src="vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+@include('frontend.footer.footer3')
+@include('frontend.footer.footer4')
+@include('frontend.footer.footer12')
