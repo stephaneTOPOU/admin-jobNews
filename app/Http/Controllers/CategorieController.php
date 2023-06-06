@@ -14,7 +14,8 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        return view('frontend.categorie.index');
+        $categories = Categorie::all();
+        return view('frontend.categorie.index', compact('categories'));
     }
 
     /**
@@ -35,7 +36,17 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nom' => 'required|string'
+        ]);
+
+        try {
+            $data = new categorie();
+            $data->nom = $request->nom;
+            return redirect()->back()->with('success','Nouvelle catégorie ajoutée avec succes');
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 
     /**

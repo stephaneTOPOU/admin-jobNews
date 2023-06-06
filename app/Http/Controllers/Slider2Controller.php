@@ -14,7 +14,8 @@ class Slider2Controller extends Controller
      */
     public function index()
     {
-        return view('frontend.slider2.index');
+        $slider = Slider2::all();
+        return view('frontend.slider2.index', compact('slider'));
     }
 
     /**
@@ -72,9 +73,10 @@ class Slider2Controller extends Controller
      * @param  \App\Models\Slider2  $slider2
      * @return \Illuminate\Http\Response
      */
-    public function edit(Slider2 $slider2)
+    public function edit($slider2)
     {
-        //
+        $slider = Slider2::find($slider2);
+        return view('frontend.slider2.update', compact('slider'));
     }
 
     /**
@@ -84,9 +86,26 @@ class Slider2Controller extends Controller
      * @param  \App\Models\Slider2  $slider2
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Slider2 $slider2)
+    public function update(Request $request, $slider2)
     {
-        //
+        {
+            $data = $request->validate([
+                'image' => 'required|file'
+            ]);
+            
+            try {
+                $data = Slider2::find($slider2);
+                if ($request->image){
+                    $filename = time().rand(1,50).'.'.$request->image->extension();
+                    $img = $request->file('image')->storeAs('slider', $filename, 'public');
+                    $data->image = $img;
+                    $data->update();
+                    return redirect()->back()->with('success','Image modifiée avec succes');
+                }
+            } catch (Exception $e) {
+                return redirect()->back()->with('success',$e->getMessage());
+            }
+        }
     }
 
     /**
@@ -97,6 +116,11 @@ class Slider2Controller extends Controller
      */
     public function destroy(Slider2 $slider2)
     {
-        //
+        try {
+            $slider2->delete();
+            return redirect()->back()->with('success','Image supprimée avec succes');
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 }

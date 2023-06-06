@@ -43,20 +43,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($categories as $categorie )
                                     <tr>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{$categorie->id}}</td>
+                                        <td>{{$categorie->nom}}</td>
                                         <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp; Modifier</button>
                                             <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div><!-- .animated -->
     </div>
