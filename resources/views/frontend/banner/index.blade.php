@@ -15,7 +15,9 @@
 
     @include('frontend.head.head')
     @include('frontend.head.head2')
-        
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.5.1/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.5.1/sweetalert2.all.min.js"></script>
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
@@ -55,60 +57,103 @@
                                                 <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
                                             </form> --}}
 
-                                            <button type="submit" class="btn btn-danger" onclick="deleteData({{ $banner->id }})" data-id="{{ $banner->id }}" data-target="#default{{ $banner->id }}"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
-                                            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                                                            <script>
+                                            <button class="btn btn-danger" onclick="deleteData({{ $banner->id }})">
+                                            <i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
+                                            {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+                                            {{-- <script>
 
-                                                            function deleteData(id) {
+                                                function deleteData(id) {
+                                                    Swal.fire({
+                                                    title: 'Etes-vous sûr?',
+                                                    text: "Vous ne pourrez pas revenir en arrière!",
+                                                    icon: 'warning',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#3085d6',
+                                                    cancelButtonColor: '#d33',
+                                                    confirmButtonText: 'Oui, supprimez!'
+                                                    }).then((result) => {
+                                                    if (result.isConfirmed) {
 
-                                                                let table = $('#bootstrap-data-table-export');
+                                                        let url = "{{url('banner')}}/" + id
+                                                        //window.location.reload();
 
-                                                                Swal.fire({
-                                                                title: 'Etes-vous sûr?',
-                                                                text: "Vous ne pourrez pas revenir en arrière!",
-                                                                icon: 'warning',
-                                                                showCancelButton: true,
-                                                                confirmButtonColor: '#3085d6',
-                                                                cancelButtonColor: '#d33',
-                                                                confirmButtonText: 'Oui, supprimez!'
-                                                                }).then((result) => {
-                                                                if (result.isConfirmed) {
+                                                        console.log(url);
+                                                        $.ajax({
+                                                            type: 'POST',
+                                                            url: url,
+                                                            data: {
+                                                            _method: 'DELETE',
+                                                            _token: "{{ csrf_token() }}",
+                                                            banner: id                                                               
+                                                            },
 
-                                                                    //let url = "{{ route('banner.destroy',['banner' => $banner->id]) }}"
-                                                                    let url = "{{url('banner')}}/" + id
-                                                                    window.location.reload();
-
-                                                                    console.log(url);
-                                                                    $.ajax({
-                                                                        type: 'POST',
-                                                                        url: url,
-                                                                        data: {
-                                                                        _method: 'DELETE',
-                                                                        _token: "{{ csrf_token() }}",
-                                                                        banner: id                                                                  
-                                                                        },
-                                                                        
-                                                                        success: function () {
-                                                                        Swal.fire(
-                                                                            'Supprimé!',
-                                                                            'La présentation a été supprimée.',
-                                                                            'success'
-                                                                        )
-                                                                        table.dataTable({ ajax: "data.json"}).ajax.reload();
-                                                                        
-                                                                    },
-
-                                                                        error: function(){
-                                                                            alert('error');
-                                                                        },
-                                                                    })
-                                                                }
-
-                                                            });
-
-                                                            }
+                                                            success: function () {
+                                                            Swal.fire(
+                                                                'Supprimé!',
+                                                                'La présentation a été supprimée.',
+                                                                'success'
+                                                            )
+                                                            let table = $('#bootstrap-data-table-export');
+                                                            table.dataTable({ ajax: "data.json"}).ajax.reload();
                                                             
-                                                            </script>
+                                                        },
+
+                                                            error: function(){
+                                                                alert('error');
+                                                            },
+                                                        })
+                                                    }
+
+                                                });
+
+                                                }
+                                            </script> --}}
+
+                                            <script type="text/javascript">
+                                                function deleteData(id) {
+                                                    swal.fire({
+                                                        title: "Delete?",
+                                                        icon: 'question',
+                                                        text: "Please ensure and then confirm!",
+                                                        type: "warning",
+                                                        showCancelButton: !0,
+                                                        confirmButtonText: "Yes, delete it!",
+                                                        cancelButtonText: "No, cancel!",
+                                                        reverseButtons: !0
+                                                    }).then(function (e) {
+                                            
+                                                        if (e.value === true) {
+                                                            
+                                                            $.ajax({
+                                                                type: 'POST',
+                                                                url: "{{url('banner')}}/" + id,
+                                                                data: {
+                                                                    _token: "{{ csrf_token() }}",
+                                                                    _method: 'delete'
+                                                                },
+                                                                dataType: 'JSON',
+                                                                success: function (results) {
+                                                                    if (results.success === true) {
+                                                                        swal.fire("Done!", results.message, "success");
+                                                                        // refresh page after 2 seconds
+                                                                        setTimeout(function(){
+                                                                            location.reload();
+                                                                        },2000);
+                                                                    } else {
+                                                                        swal.fire("Error!", results.message, "error");
+                                                                    }
+                                                                }
+                                                            });
+                                            
+                                                        } else {
+                                                            e.dismiss;
+                                                        }
+                                            
+                                                    }, function (dismiss) {
+                                                        return false;
+                                                    })
+                                                }
+                                            </script>
                                         </td>
                                     </tr>
                                     @endforeach                                 
