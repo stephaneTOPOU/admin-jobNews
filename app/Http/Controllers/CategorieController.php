@@ -41,8 +41,9 @@ class CategorieController extends Controller
         ]);
 
         try {
-            $data = new categorie();
+            $data = new Categorie();
             $data->nom = $request->nom;
+            $data->save();
             return redirect()->back()->with('success','Nouvelle catégorie ajoutée avec succes');
         } catch (Exception $e) {
             return redirect()->back()->with('success',$e->getMessage());
@@ -66,9 +67,10 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categorie $categorie)
+    public function edit($categorie)
     {
-        //
+        $categories = Categorie::find($categorie);
+        return view('frontend.categorie.update', compact('categories'));
     }
 
     /**
@@ -78,9 +80,20 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categorie $categorie)
+    public function update(Request $request, $categorie)
     {
-        //
+        $data = $request->validate([
+            'nom' => 'required|string'
+        ]);
+
+        try {
+            $data = Categorie::find($categorie);
+            $data->nom = $request->nom;
+            $data->update();
+            return redirect()->back()->with('success','Catégorie modifiée avec succes');
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 
     /**

@@ -47,7 +47,8 @@
                                     <tr>
                                         <td>{{$categorie->id}}</td>
                                         <td>{{$categorie->nom}}</td>
-                                        <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp; Modifier</button>
+                                        <td>
+                                            <a href="{{ route('categorie.edit', $categorie->id)}}" type="button" class="btn btn-primary" style="color: white"><i class="fa fa-edit"></i>&nbsp; Modifier</a>
                                             <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
                                         </td>
                                     </tr>

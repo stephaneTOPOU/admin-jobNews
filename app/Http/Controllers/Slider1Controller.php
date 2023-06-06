@@ -42,7 +42,7 @@ class Slider1Controller extends Controller
             ]);
             
             try {
-                $data = new slider1();
+                $data = new Slider1();
                 if ($request->image){
                     $filename = time().rand(1,50).'.'.$request->image->extension();
                     $img = $request->file('image')->storeAs('slider', $filename, 'public');
