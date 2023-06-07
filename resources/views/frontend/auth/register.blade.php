@@ -58,7 +58,7 @@
                                     <input type="password" class="form-control" placeholder="Mot de passe" name="password">
                         </div>
                                     
-                                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
+                                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Enrégistrer</button>
                                     <div class="register-link m-t-15 text-center">
                                         <p>Vous avez déjà un compte ? <a href="{{ route('login') }}"> Connexion</a></p>
                                     </div>

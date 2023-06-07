@@ -38,7 +38,7 @@ Route::resource('/user', UserController::class);
 });
 
 Route::get('login',[App\Http\Controllers\AuthController::class,'login'])->name('login');
-Route::post('logout',[App\Http\Controllers\AuthController::class,'logout'])->name('logout');
+Route::get('logout',[App\Http\Controllers\AuthController::class,'logout'])->name('logout');
 Route::post('authenticate', [App\Http\Controllers\AuthController::class, 'authenticate'])->name('authenticate');
 Route::post('register', [App\Http\Controllers\AuthController::class, 'register'])->name('register');
 Route::get('register', [App\Http\Controllers\AuthController::class, 'index'])->name('register.index');
