@@ -21,7 +21,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong>Ajouter</strong> offre 
+                            <strong>Modifier</strong> offre 
                         </div>
                         <div class="card-body card-block">
                             @if (Session::has('success'))
@@ -68,7 +68,7 @@
                                             class="btn btn-success btn-sm"
                                         >
                                             <i class="fa fa-dot-circle-o"></i>
-                                            Ajouter
+                                            Modifier
                                         </button>
                                         <button
                                             type="reset"
