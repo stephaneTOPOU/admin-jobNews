@@ -5,7 +5,6 @@
 @include('frontend.header.header5')
 @include('frontend.header.header6')
 @include('frontend.header.header7')
-@include('frontend.header.header8')
 @include('frontend.header.header9')
 @include('frontend.header.header10')
 @include('frontend.side.side')
@@ -26,14 +25,14 @@
                         </div>
                         <div class="card-body card-block">
                             @if (Session::has('success'))
-                            <div class="col-sm-12">
-                                <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                                    <span class="badge badge-pill badge-success">Success</span> {{ Session::get('success') }}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                <div class="col-sm-12">
+                                    <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                                        <span class="badge badge-pill badge-success">Success</span> {{ Session::get('success') }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
                             @endif
                             <form action="{{ route('user.store') }}" method="post" class="">
                                 @csrf

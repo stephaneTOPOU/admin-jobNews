@@ -5,7 +5,6 @@
 @include('frontend.header.header5')
 @include('frontend.header.header6')
 @include('frontend.header.header7')
-@include('frontend.header.header8')
 @include('frontend.header.header9')
 @include('frontend.header.header10')
 @include('frontend.side.side')
@@ -49,13 +48,13 @@
                                     </div>
                                     <div class="form-group col-md-4"><label for="text-input" class=" form-control-label"><strong>Entreprise</strong></label><input type="text" id="text-input" name="entreprise" placeholder="Enter le nom de l'entreprise.." class="form-control" value="{{ old('entreprise')??$offres->entreprise }}" required></div>
                                     <div class="form-group col-md-4"><label for="text-input" class=" form-control-label"><strong>Titre</strong></label><input type="text" id="text-input" name="titre" placeholder="Enter le titre de l'offre.." class="form-control" value="{{ old('titre')??$offres->titre }}" required></div>
-                                    <div class="form-group col-md-4"><label for="textarea-input" class=" form-control-label"><strong>Description</strong></label><textarea name="description" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="">{{ old('description')??$offres->description }}</textarea></div>
-                                    <div class="form-group col-md-4"><label for="textarea-input" class=" form-control-label"><strong>Mission</strong></label><textarea name="mission" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="">{{ old('mission')??$offres->mission }}</textarea></div>
-                                    <div class="form-group col-md-4"><label for="textarea-input" class=" form-control-label"><strong>Profil</strong></label><textarea name="profil" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="">{{ old('profil')??$offres->profil }}</textarea></div>
-                                    <div class="form-group col-md-4"><label for="textarea-input" class=" form-control-label"><strong>Dossier</strong></label><textarea name="dossier" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="">{{ old('dossier')??$offres->dossier }}</textarea></div>
+                                    <div class="form-group col-md-6"><label for="textarea-input" class=" form-control-label"><strong>Description</strong></label><textarea name="description" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="">{{ old('description')??$offres->description }}</textarea></div>
+                                    <div class="form-group col-md-6"><label for="textarea-input" class=" form-control-label"><strong>Mission</strong></label><textarea name="mission" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="">{{ old('mission')??$offres->mission }}</textarea></div>
+                                    <div class="form-group col-md-6"><label for="textarea-input" class=" form-control-label"><strong>Profil</strong></label><textarea name="profil" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="">{{ old('profil')??$offres->profil }}</textarea></div>
+                                    <div class="form-group col-md-6"><label for="textarea-input" class=" form-control-label"><strong>Dossier</strong></label><textarea name="dossier" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="">{{ old('dossier')??$offres->dossier }}</textarea></div>
                                     <div class="form-group col-md-4"><label for="text-input" class=" form-control-label"><strong>Lien</strong></label><input type="text" id="text-input" name="lien" placeholder="Entrer le lien où postuler.." class="form-control" value="{{ old('lien')??$offres->lien }}"></div>
                                     <div class="form-group col-md-4"><label for="city" class=" form-control-label"><strong>Lieu</strong></label><input type="text" id="city" name="lieu" placeholder="Entrer le lieu" class="form-control" value="{{ old('lieu')??$offres->lieu }}"></div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                         <label class="form-control-label"><strong>Date limite</strong></label>
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
@@ -90,3 +89,10 @@
     </div>
     <!-- .content -->
 </div>
+@include('frontend.footer.footer1')
+@include('frontend.footer.footer2')
+<script src="vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+@include('frontend.footer.footer3')
+@include('frontend.footer.footer4')
+@include('frontend.footer.footer12')
