@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('frontend.user.index');
+        $users = User::all();
+        return view('frontend.user.index', compact('users'));
     }
 
     /**
@@ -35,7 +37,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string',
+            'prenom' => 'required|string',
+            'email' => 'required|email|string',
+            'password' => 'required|string'
+        ]);
+        
+        try {
+            $data['password'] = bcrypt($request->password);
+            User::create($data);
+            return redirect()->back()->with('success','Utilisateur ajouté avec succes');
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 
     /**
@@ -55,9 +70,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($user)
     {
-        //
+        $users = User::find($user);
+        return view('frontend.user.update', compact('users'));
     }
 
     /**
@@ -67,9 +83,31 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $user)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string',
+            'prenom' => 'required|string',
+            'email' => 'required|email|string',
+            'password' => 'required|string'
+        ]);
+        
+        try {
+            $data = User::find($user);
+            if (Hash::check(request('password'), $data->password)) {
+                $data['password'] = bcrypt($request->password);
+                $data->name = $request->name;
+                $data->prenom = $request->prenom;
+                $data->email = $request->email;
+                $data->update();
+                return redirect()->back()->with('success','Utilisateur modifié avec succes');
+            }else{
+                return redirect()->back()->with('success','Mot de passe incorrect');
+            }
+            
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 
     /**
@@ -80,6 +118,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        try {
+            $user->delete();
+            return redirect()->back()->with('success','Image supprimée avec succes');
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 }

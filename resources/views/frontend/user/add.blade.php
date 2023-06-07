@@ -25,29 +25,41 @@
                             <strong>Ajouter</strong> un utilisateur 
                         </div>
                         <div class="card-body card-block">
-                            <div class="card-body card-block">
-                                <form action="" method="post" class="">
-                                    <div class="form-group col-md-6"><label for="text-input" class=" form-control-label"><strong>Nom</strong></label><input type="text" id="text-input" name="text-input" placeholder="Entrer votre nom.." class="form-control"></div>
-                                    <div class="form-group col-md-6"><label for="text-input" class=" form-control-label"><strong>Prénom</strong></label><input type="text" id="text-input" name="text-input" placeholder="Entrer votre prénom.." class="form-control"></div>
-                                    <div class="form-group col-md-6"><label for="email-input" class=" form-control-label"><strong>Adresse Email</strong></label><input type="email" id="email-input" name="email-input" placeholder="Enter une adresse email.." class="form-control" required=""></div>
-                                    <div class="form-group col-md-6"><label for="password-input" class=" form-control-label"><strong>Mot de passe</strong></label><input type="password" id="password-input" name="password-input" placeholder="Enter un mot de passe.." class="form-control"></div>                          
+                            @if (Session::has('success'))
+                            <div class="col-sm-12">
+                                <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                                    <span class="badge badge-pill badge-success">Success</span> {{ Session::get('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                             </div>
+                            @endif
+                            <form action="{{ route('user.store') }}" method="post" class="">
+                                @csrf
+                                <div class="form-group col-md-6"><label for="name" class=" form-control-label"><strong>Nom</strong></label><input type="text" id="name" name="name" placeholder="Entrer votre nom.." class="form-control" required></div>
+                                <div class="form-group col-md-6"><label for="prenom" class=" form-control-label"><strong>Prénom</strong></label><input type="text" id="prenom" name="prenom" placeholder="Entrer votre prénom.." class="form-control" required></div>
+                                <div class="form-group col-md-6"><label for="email" class=" form-control-label"><strong>Adresse Email</strong></label><input type="email" id="email" name="email" placeholder="Enter une adresse email.." class="form-control" required required=""></div>
+                                <div class="form-group col-md-6"><label for="password" class=" form-control-label"><strong>Mot de passe</strong></label><input type="password" id="password" name="password" placeholder="Enter un mot de passe.." class="form-control" required></div>                          
+                                <div class="card-footer">
+                                    <button
+                                        type="submit"
+                                        class="btn btn-success btn-sm"
+                                    >
+                                        <i class="fa fa-dot-circle-o"></i>
+                                        Ajouter
+                                    </button>
+                                    <button
+                                        type="reset"
+                                        class="btn btn-danger btn-sm"
+                                        onclick="windows.location='{{ URL::previous() }}'"
+                                    >
+                                        <i class="fa fa-ban"></i> Annuler
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="card-footer">
-                            <button
-                                type="submit"
-                                class="btn btn-success btn-sm"
-                            >
-                                <i class="fa fa-dot-circle-o"></i>
-                                Ajouter
-                            </button>
-                            <button
-                                type="reset"
-                                class="btn btn-danger btn-sm"
-                            >
-                                <i class="fa fa-ban"></i> Annuler
-                            </button>
-                        </div>
+                        
                     </div>
                 </div>
 
@@ -57,3 +69,10 @@
     </div>
     <!-- .content -->
 </div>
+@include('frontend.footer.footer1')
+@include('frontend.footer.footer2')
+<script src="vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+@include('frontend.footer.footer3')
+@include('frontend.footer.footer4')
+@include('frontend.footer.footer12')

@@ -105,9 +105,38 @@ class OffreController extends Controller
      * @param  \App\Models\Offre  $offre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Offre $offre)
+    public function update(Request $request, $offre)
     {
-        //
+        $data = $request->validate([
+            'categorie_id' => 'required|integer',
+            'entreprise' => 'required|string',
+            'titre' => 'required|string',
+            'description' => 'required|string',
+            'mission' => 'required|string',
+            'profil' => 'required|string',
+            'dossier' => 'required|string',
+            'lien' => 'required|string',
+            'lieu' => 'required|string',
+            'date_limite' => 'required|string',
+        ]);
+
+        try {
+            $data = Offre::find($offre);
+            $data->categorie_id = $request->categorie_id;
+            $data->entreprise = $request->entreprise;
+            $data->titre = $request->titre;
+            $data->description = $request->description;
+            $data->mission = $request->mission;
+            $data->profil = $request->profil;
+            $data->dossier = $request->dossier;
+            $data->lien = $request->lien;
+            $data->lieu = $request->lieu;
+            $data->date_lim = $request->date_limite;
+            $data->update();
+            return redirect()->back()->with('success','Offre modifié avec succes');
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 
     /**
@@ -118,6 +147,11 @@ class OffreController extends Controller
      */
     public function destroy(Offre $offre)
     {
-        //
+        try {
+            $offre->delete();
+            return redirect()->back()->with('success','Offre supprimée avec succes');
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 }

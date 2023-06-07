@@ -24,10 +24,21 @@ use App\Http\Controllers\UserController;
 //     return view('welcome');
 // });
 
-Route::get('/', HomeController::class)->name('home');
+
+Route::get('/', HomeController::class)->name('home')->middleware('auth');
+
+Route::middleware(['auth'])->group(function () {
 Route::resource('/banner', BannerController::class);
 Route::resource('/slider1', Slider1Controller::class);
 Route::resource('/slider2', Slider2Controller::class);
 Route::resource('/categorie', CategorieController::class);
 Route::resource('/offre', OffreController::class);
 Route::resource('/user', UserController::class);
+
+});
+
+Route::get('login',[App\Http\Controllers\AuthController::class,'login'])->name('login');
+Route::post('logout',[App\Http\Controllers\AuthController::class,'logout'])->name('logout');
+Route::post('authenticate', [App\Http\Controllers\AuthController::class, 'authenticate'])->name('authenticate');
+Route::post('register', [App\Http\Controllers\AuthController::class, 'register'])->name('register');
+Route::get('register', [App\Http\Controllers\AuthController::class, 'index'])->name('register.index');

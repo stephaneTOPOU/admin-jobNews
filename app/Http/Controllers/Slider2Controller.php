@@ -36,23 +36,21 @@ class Slider2Controller extends Controller
      */
     public function store(Request $request)
     {
-        {
-            $data = $request->validate([
-                'image' => 'required|file'
-            ]);
-            
-            try {
-                $data = new Slider2();
-                if ($request->image){
-                    $filename = time().rand(1,50).'.'.$request->image->extension();
-                    $img = $request->file('image')->storeAs('slider', $filename, 'public');
-                    $data->image = $img;
-                    $data->save();
-                    return redirect()->back()->with('success','Nouvelle image ajoutée avec succes');
-                }
-            } catch (Exception $e) {
-                return redirect()->back()->with('success',$e->getMessage());
+        $data = $request->validate([
+            'image' => 'required|file'
+        ]);
+        
+        try {
+            $data = new Slider2();
+            if ($request->image){
+                $filename = time().rand(1,50).'.'.$request->image->extension();
+                $img = $request->file('image')->storeAs('slider', $filename, 'public');
+                $data->image = $img;
+                $data->save();
+                return redirect()->back()->with('success','Nouvelle image ajoutée avec succes');
             }
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
         }
     }
 
@@ -88,7 +86,6 @@ class Slider2Controller extends Controller
      */
     public function update(Request $request, $slider2)
     {
-        {
             $data = $request->validate([
                 'image' => 'required|file'
             ]);
@@ -105,7 +102,6 @@ class Slider2Controller extends Controller
             } catch (Exception $e) {
                 return redirect()->back()->with('success',$e->getMessage());
             }
-        }
     }
 
     /**

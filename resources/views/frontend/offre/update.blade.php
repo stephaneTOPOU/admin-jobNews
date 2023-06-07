@@ -25,18 +25,17 @@
                             <strong>Ajouter</strong> offre 
                         </div>
                         <div class="card-body card-block">
-                            <div class="card-body card-block">
-                                @if (Session::has('success'))
-                                <div class="col-sm-12">
-                                    <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                                        <span class="badge badge-pill badge-success">Success</span> {{ Session::get('success') }}
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                            @if (Session::has('success'))
+                                    <div class="col-sm-12">
+                                        <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                                            <span class="badge badge-pill badge-success">Success</span> {{ Session::get('success') }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                                @endif
-                                <form action="{{ route('offre.update',$offres->id) }}" method="post" class="" enctype="multipart/form-data">
+                            @endif
+                            <form action="{{ route('offre.update',$offres->id) }}" method="post" class="" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group col-md-4" >
@@ -44,16 +43,16 @@
                                         <select name="categorie_id" id="SelectLm" class="form-control-sm form-control">
                                             <option value="0">Choisir la catégorie</option>
                                             @foreach ($categorie as $categories )
-                                            <option value="{{ $categorie->id }}" {{ $offres->categorie_id == $categorie->id ? 'selected' : '' }}>{{ $categorie->nom }}</option>
+                                            <option value="{{ $categories->id }}" {{ $offres->categorie_id == $categories->id ? 'selected' : '' }}>{{ $categories->nom }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4"><label for="text-input" class=" form-control-label"><strong>Entreprise</strong></label><input type="text" id="text-input" name="entreprise" placeholder="Enter le nom de l'entreprise.." class="form-control" value="{{ old('entreprise')??$offres->entreprise }}" required></div>
                                     <div class="form-group col-md-4"><label for="text-input" class=" form-control-label"><strong>Titre</strong></label><input type="text" id="text-input" name="titre" placeholder="Enter le titre de l'offre.." class="form-control" value="{{ old('titre')??$offres->titre }}" required></div>
-                                    <div class="form-group col-md-4"><label for="textarea-input" class=" form-control-label"><strong>Description</strong></label><textarea name="description" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="{{ old('description')??$offres->description }}"></textarea></div>
-                                    <div class="form-group col-md-4"><label for="textarea-input" class=" form-control-label"><strong>Mission</strong></label><textarea name="mission" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="{{ old('mission')??$offres->mission }}"></textarea></div>
-                                    <div class="form-group col-md-4"><label for="textarea-input" class=" form-control-label"><strong>Profil</strong></label><textarea name="profil" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="{{ old('profil')??$offres->profil }}"></textarea></div>
-                                    <div class="form-group col-md-4"><label for="textarea-input" class=" form-control-label"><strong>Dossier</strong></label><textarea name="dossier" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="{{ old('dossier')??$offres->dossier }}"></textarea></div>
+                                    <div class="form-group col-md-4"><label for="textarea-input" class=" form-control-label"><strong>Description</strong></label><textarea name="description" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="">{{ old('description')??$offres->description }}</textarea></div>
+                                    <div class="form-group col-md-4"><label for="textarea-input" class=" form-control-label"><strong>Mission</strong></label><textarea name="mission" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="">{{ old('mission')??$offres->mission }}</textarea></div>
+                                    <div class="form-group col-md-4"><label for="textarea-input" class=" form-control-label"><strong>Profil</strong></label><textarea name="profil" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="">{{ old('profil')??$offres->profil }}</textarea></div>
+                                    <div class="form-group col-md-4"><label for="textarea-input" class=" form-control-label"><strong>Dossier</strong></label><textarea name="dossier" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control" value="">{{ old('dossier')??$offres->dossier }}</textarea></div>
                                     <div class="form-group col-md-4"><label for="text-input" class=" form-control-label"><strong>Lien</strong></label><input type="text" id="text-input" name="lien" placeholder="Entrer le lien où postuler.." class="form-control" value="{{ old('lien')??$offres->lien }}"></div>
                                     <div class="form-group col-md-4"><label for="city" class=" form-control-label"><strong>Lieu</strong></label><input type="text" id="city" name="lieu" placeholder="Entrer le lieu" class="form-control" value="{{ old('lieu')??$offres->lieu }}"></div>
                                     <div class="form-group col-md-6">
@@ -80,8 +79,7 @@
                                             <i class="fa fa-ban"></i> Annuler
                                         </button>
                                     </div>
-                                </form>                                
-                            </div>
+                            </form>                                
                         </div>
                     </div>
                 </div>

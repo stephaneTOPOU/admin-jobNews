@@ -104,6 +104,11 @@ class CategorieController extends Controller
      */
     public function destroy(Categorie $categorie)
     {
-        //
+        try {
+            $categorie->delete();
+            return redirect()->back()->with('success','Categorie supprimée avec succes');
+        } catch (Exception $e) {
+            return redirect()->back()->with('success',$e->getMessage());
+        }
     }
 }

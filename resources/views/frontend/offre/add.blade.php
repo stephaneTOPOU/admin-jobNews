@@ -91,3 +91,10 @@
     </div>
     <!-- .content -->
 </div>
+@include('frontend.footer.footer1')
+@include('frontend.footer.footer2')
+<script src="vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+@include('frontend.footer.footer3')
+@include('frontend.footer.footer4')
+@include('frontend.footer.footer12')
