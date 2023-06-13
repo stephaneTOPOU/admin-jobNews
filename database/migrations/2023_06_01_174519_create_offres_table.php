@@ -30,6 +30,7 @@ class CreateOffresTable extends Migration
             $table->string('lieu')->nullable();
             $table->string('libelle')->nullable();
             $table->string('date_lim')->nullable();
+            $table->boolean('valide')->default(0);
             $table->timestamps();
             $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
         });
