@@ -17,6 +17,10 @@ class CreateOffresTable extends Migration
             $table->id();
             $table->bigInteger('categorie_id')->unsigned();
             $table->string('entreprise')->nullable();
+            $table->string('site')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('linkedin')->nullable();
             $table->string('titre')->nullable();
             $table->string('description')->nullable();
             $table->string('mission')->nullable();

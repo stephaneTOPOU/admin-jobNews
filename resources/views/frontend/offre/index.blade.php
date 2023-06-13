@@ -39,8 +39,10 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Entreprise</th>
-                                        <th>Titre</th>
-                                        <th>Description</th>
+                                        <th>Site web de l'entreprise</th>
+                                        <th>Facebook de l'entreprise</th>
+                                        <th>Titre de l'offre</th>
+                                        <th>Description de l'offre</th>
                                         <th>Date limite</th>
                                         <th>Action</th>
                                     </tr>
@@ -50,6 +52,8 @@
                                     <tr>
                                         <td>{{ $offres->identifiant }}</td>
                                         <td>{{ $offres->entreprise }}</td>
+                                        <td>{{ $offres->site }}</td>
+                                        <td>{{ $offres->facebook }}</td>
                                         <td>{{ $offres->titre }}</td>
                                         <td>{{ $offres->description }}</td>
                                         <td>{{ $offres->date_lim }}</td>
