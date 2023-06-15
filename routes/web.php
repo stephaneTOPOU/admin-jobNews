@@ -5,9 +5,13 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\Slider1Controller;
 use App\Http\Controllers\Slider2Controller;
+use App\Http\Controllers\Slider_search1Controller;
+use App\Http\Controllers\Slider_search2Controller;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\OffreController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ParametreController;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +35,13 @@ Route::middleware(['auth'])->group(function () {
 Route::resource('/banner', BannerController::class);
 Route::resource('/slider1', Slider1Controller::class);
 Route::resource('/slider2', Slider2Controller::class);
+Route::resource('/sliderSearch1', Slider_search1Controller::class);
+Route::resource('/sliderSearch2', Slider_search2Controller::class);
 Route::resource('/categorie', CategorieController::class);
 Route::resource('/offre', OffreController::class);
 Route::resource('/user', UserController::class);
+Route::resource('/parametre', ParametreController::class);
+Route::resource('/about', AboutController::class);
 
 });
 

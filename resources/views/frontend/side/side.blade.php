@@ -19,12 +19,31 @@
                 <li>
                     <a href="{{ route('banner.index') }}"> <i class="menu-icon fa fa-picture-o"></i>Bannière </a>
                 </li>
-                <li>
-                    <a href="{{ route('slider1.index') }}"> <i class="menu-icon fa fa-picture-o"></i>Slider1 </a>
+
+                <li class="menu-item-has-children dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-picture-o"></i>Sliders d'accueil</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li>
+                            <i class="menu-icon fa fa-picture-o"></i><a href="{{ route('slider1.index') }}">Slider1 </a>
+                        </li>
+                        <li>
+                            <i class="menu-icon fa fa-picture-o"></i><a href="{{ route('slider2.index')}}">Slider2 </a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
-                    <a href="{{ route('slider2.index')}}"> <i class="menu-icon fa fa-picture-o"></i>Slider2 </a>
+
+                <li class="menu-item-has-children dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-picture-o"></i>Sliders de recherche</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li>
+                            <i class="menu-icon fa fa-picture-o"></i><a href="{{ route('sliderSearch1.index') }}">Slider1 </a>
+                        </li>
+                        <li>
+                            <i class="menu-icon fa fa-picture-o"></i><a href="{{ route('sliderSearch2.index')}}">Slider2 </a>
+                        </li>
+                    </ul>
                 </li>
+
                 <h3 class="menu-title">Offres</h3>
                 <li>
                     <a href="{{ route('categorie.index')}}"> <i class="menu-icon ti-view-list-alt"></i>Catégories </a>
@@ -32,7 +51,16 @@
                 <li>
                     <a href="{{ route('offre.index')}}"> <i class="menu-icon fa fa-folder"></i>Offres </a>
                 </li>
+                <li>
+                    <a href="{{ route('offre.index')}}"> <i class="menu-icon fa fa-folder"></i>Offres non validé</a>
+                </li>
                 <h3 class="menu-title">Paramètre</h3>
+                <li>
+                    <a href="{{ route('about.index')}}"> <i class="menu-icon fa fa-pencil-square-o"></i>A propos </a>
+                </li>
+                <li>
+                    <a href="{{ route('parametre.index')}}"> <i class="menu-icon fa fa-book"></i>Contacts </a>
+                </li>
                 <li>
                     <a href="{{ route('user.index')}}"> <i class="menu-icon fa fa-users"></i>Utilisateurs </a>
                 </li>
