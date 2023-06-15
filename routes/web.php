@@ -39,6 +39,7 @@ Route::resource('/sliderSearch1', Slider_search1Controller::class);
 Route::resource('/sliderSearch2', Slider_search2Controller::class);
 Route::resource('/categorie', CategorieController::class);
 Route::resource('/offre', OffreController::class);
+Route::get('/offre-non-valide', OffreController::class)->name('non.valide');
 Route::resource('/user', UserController::class);
 Route::resource('/parametre', ParametreController::class);
 Route::resource('/about', AboutController::class);

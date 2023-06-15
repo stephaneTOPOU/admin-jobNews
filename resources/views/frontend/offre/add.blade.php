@@ -6,6 +6,9 @@
 @include('frontend.header.header6')
 @include('frontend.header.header7')
 @include('frontend.header.header9')
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 @include('frontend.header.header10')
 @include('frontend.side.side')
 
@@ -47,13 +50,13 @@
                                 </div>
                                 <div class="form-group col-md-4"><label for="entreprise" class=" form-control-label"><strong>Entreprise</strong></label><input type="text" id="entreprise" name="entreprise" placeholder="Enter le nom de l'entreprise.." class="form-control" required></div>
                                 <div class="form-group col-md-4"><label for="titre" class=" form-control-label"><strong>Titre</strong></label><input type="text" id="titre" name="titre" placeholder="Enter le titre de l'offre.." class="form-control" required></div>
-                                <div class="form-group col-md-6"><label for="description" class=" form-control-label"><strong>Description</strong></label><textarea name="description" id="description" rows="4" placeholder="Saisir..." class="form-control"></textarea></div>
-                                <div class="form-group col-md-6"><label for="textarea-input" class=" form-control-label"><strong>Mission</strong></label><textarea name="mission" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control"></textarea></div>
-                                <div class="form-group col-md-6"><label for="textarea-input" class=" form-control-label"><strong>Profil</strong></label><textarea name="profil" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control"></textarea></div>
-                                <div class="form-group col-md-6"><label for="textarea-input" class=" form-control-label"><strong>Dossier</strong></label><textarea name="dossier" id="textarea-input" rows="4" placeholder="Saisir..." class="form-control"></textarea></div>
+                                <div class="form-group col-md-6"><label for="job-description"><strong>Description du poste</strong></label><textarea id="summernote-1" name="description"></textarea></div>
+                                <div class="form-group col-md-6"><label for="job-description"><strong>Mission</strong></label><textarea id="summernote-2" name="mission"></textarea></div>
+                                <div class="form-group col-md-6"><label for="job-description"><strong>Profil</strong></label><textarea id="summernote-3" name="profil"></textarea></div>
+                                <div class="form-group col-md-6"><label for="job-description"><strong>Dossier</strong></label><textarea id="summernote-4" name="dossier"></textarea></div>
                                 <div class="form-group col-md-4"><label for="text-input" class=" form-control-label"><strong>Lien</strong></label><input type="text" id="text-input" name="lien" placeholder="Entrer le lien où postuler.." class="form-control"></div>
                                 <div class="form-group col-md-4"><label for="city" class=" form-control-label"><strong>Lieu</strong></label><input type="text" id="city" name="lieu" placeholder="Entrer le lieu" class="form-control"></div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-2">
                                     <label class="form-control-label"><strong>Date limite</strong></label>
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
@@ -61,6 +64,7 @@
                                     </div>
                                     <small class="form-text text-muted">ex. JJ/MM/AAAA</small>
                                 </div>
+                                <div class="form-group col-md-3"><label class="switch switch-3d switch-success mr-3"><input type="checkbox" class="switch-input" checked="true"> <span class="switch-label"></span> <span class="switch-handle"></span></label></div>
                                 <div class="card-footer">
                                     <button
                                         type="submit"
@@ -94,4 +98,5 @@
 <script src="vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 @include('frontend.footer.footer3')
 @include('frontend.footer.footer4')
+@include('frontend.footer.footer13')
 @include('frontend.footer.footer12')

@@ -52,7 +52,7 @@
                     <a href="{{ route('offre.index')}}"> <i class="menu-icon fa fa-folder"></i>Offres </a>
                 </li>
                 <li>
-                    <a href="{{ route('offre.index')}}"> <i class="menu-icon fa fa-folder"></i>Offres non validé</a>
+                    <a href="{{ route('non.valide')}}"> <i class="menu-icon fa fa-folder"></i>Offres non validé</a>
                 </li>
                 <h3 class="menu-title">Paramètre</h3>
                 <li>

@@ -20,8 +20,19 @@ class OffreController extends Controller
         $offre = DB::table('categories')
         ->join('offres', 'categories.id', '=', 'offres.categorie_id')
         ->select('*', 'offres.id as identifiant')
+        ->where('valide',1)
         ->get();
         return view('frontend.offre.index', compact('offre'));
+    }
+
+    public function __invoke()
+    {
+        $offre = DB::table('categories')
+        ->join('offres', 'categories.id', '=', 'offres.categorie_id')
+        ->select('*', 'offres.id as identifiant')
+        ->where('valide', 0)
+        ->get();
+        return view('frontend.offre.offre_non_valide', compact('offre'));
     }
 
     /**
