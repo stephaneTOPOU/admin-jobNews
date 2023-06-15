@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Slider1;
+use Exception;
 use Illuminate\Http\Request;
 
 class Slider1Controller extends Controller
