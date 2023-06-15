@@ -41,24 +41,25 @@
                                 <div class="form-group col-md-4"><label for="mission1" class=" form-control-label"><strong>Mission1</strong></label><textarea name="mission1" id="mission1" rows="4" placeholder="Saisir..." class="form-control" required></textarea></div>
                                 <div class="form-group col-md-4"><label for="mission2" class=" form-control-label"><strong>Mission2</strong></label><textarea name="mission2" id="mission2" rows="4" placeholder="Saisir..." class="form-control" required></textarea></div>
                                 <div class="form-group col-md-4"><label for="mission3" class=" form-control-label"><strong>Mission3</strong></label><textarea name="mission3" id="mission3" rows="4" placeholder="Saisir..." class="form-control" required></textarea></div>
-                                <div class="card-footer">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-success btn-sm"
-                                    >
-                                        <i class="fa fa-dot-circle-o"></i>
-                                        Ajouter
-                                    </button>
-                                    <button
-                                        type="reset"
-                                        class="btn btn-danger btn-sm"
-                                        onclick="windows.location='{{ URL::previous() }}'"
-                                    >
-                                        <i class="fa fa-ban"></i> Annuler
-                                    </button>
-                                </div>
-                            </form>
+                                
                         </div>
+                        <div class="card-footer">
+                            <button
+                                type="submit"
+                                class="btn btn-success btn-sm"
+                            >
+                                <i class="fa fa-dot-circle-o"></i>
+                                Ajouter
+                            </button>
+                            <button
+                                type="reset"
+                                class="btn btn-danger btn-sm"
+                                onclick="windows.location='{{ URL::previous() }}'"
+                            >
+                                <i class="fa fa-ban"></i> Annuler
+                            </button>
+                        </div>
+                    </form>
                         
                     </div>
                 </div>

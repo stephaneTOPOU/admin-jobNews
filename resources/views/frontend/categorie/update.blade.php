@@ -42,25 +42,25 @@
                             >
                             @csrf
                             @method('PUT')
-                                <div class="form-group col-md-12"><label for="text-input" class=" form-control-label"><strong>Catégorie</strong></label><input type="text" id="text-input" name="nom" value="{{ old('nom')??$categories->nom }}" placeholder="Enter le nom de la catégorie.." class="form-control"></div>   
-                                <div class="card-footer">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-success btn-sm"
-                                    >
-                                        <i class="fa fa-dot-circle-o"></i>
-                                        Ajouter
-                                    </button>
-                                    <button
-                                        type="reset"
-                                        onclick="windows.location='{{ URL::previous() }}'"
-                                        class="btn btn-danger btn-sm"
-                                    >
-                                        <i class="fa fa-ban"></i> Annuler
-                                    </button>
-                                </div>
-                            </form>                    
-                        </div>  
+                                <div class="form-group col-md-12"><label for="text-input" class=" form-control-label"><strong>Catégorie</strong></label><input type="text" id="text-input" name="nom" value="{{ old('nom')??$categories->nom }}" placeholder="Enter le nom de la catégorie.." class="form-control"></div>                     
+                        </div> 
+                        <div class="card-footer">
+                            <button
+                                type="submit"
+                                class="btn btn-success btn-sm"
+                            >
+                                <i class="fa fa-dot-circle-o"></i>
+                                Ajouter
+                            </button>
+                            <button
+                                type="reset"
+                                onclick="windows.location='{{ URL::previous() }}'"
+                                class="btn btn-danger btn-sm"
+                            >
+                                <i class="fa fa-ban"></i> Annuler
+                            </button>
+                        </div>
+                    </form>   
                     </div>
                 </div>
             </div>

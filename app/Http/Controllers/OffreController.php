@@ -65,6 +65,7 @@ class OffreController extends Controller
             'lien' => 'required|string',
             'lieu' => 'required|string',
             'date_limite' => 'required|string',
+            'valide' => 'required|integer'
         ]);
 
         try {
@@ -79,6 +80,11 @@ class OffreController extends Controller
             $data->lien = $request->lien;
             $data->lieu = $request->lieu;
             $data->date_lim = $request->date_limite;
+
+            if ($request->valide) {
+                $data->valide = $request->valide;
+            }
+
             $data->save();
             return redirect()->back()->with('success','Offre ajouté avec succes');
         } catch (Exception $e) {
@@ -130,6 +136,7 @@ class OffreController extends Controller
             'lien' => 'required|string',
             'lieu' => 'required|string',
             'date_limite' => 'required|string',
+            'valide' => 'required|integer'
         ]);
 
         try {
@@ -144,6 +151,11 @@ class OffreController extends Controller
             $data->lien = $request->lien;
             $data->lieu = $request->lieu;
             $data->date_lim = $request->date_limite;
+
+            if ($request->valide) {
+                $data->valide = $request->valide;
+            }
+
             $data->update();
             return redirect()->back()->with('success','Offre modifié avec succes');
         } catch (Exception $e) {

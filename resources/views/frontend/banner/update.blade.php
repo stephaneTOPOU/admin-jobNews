@@ -43,24 +43,6 @@
                             >
                             @csrf
                             @method('PUT')
-                                {{-- <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label
-                                            for="file-multiple-input"
-                                            class="form-control-label"
-                                            >Choisir image</label
-                                        >
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input
-                                            type="file"
-                                            id="file-multiple-input"
-                                            name="file-multiple-input"
-                                            multiple=""
-                                            class="form-control-file"
-                                        />
-                                    </div>
-                                </div> --}}
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
@@ -80,24 +62,24 @@
                                         />
                                     </div>
                                 </div>
-                                <div class="card-footer">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-success btn-sm"
-                                    >
-                                        <i class="fa fa-dot-circle-o"></i>
-                                        Modifier
-                                    </button>
-                                    <button
-                                        type="reset"
-                                        onclick="windows.location='{{ URL::previous() }}'"
-                                        class="btn btn-danger btn-sm"
-                                    >
-                                        <i class="fa fa-ban"></i> Annuler
-                                    </button>
-                                </div>
-                            </form>
                         </div>
+                        <div class="card-footer">
+                            <button
+                                type="submit"
+                                class="btn btn-success btn-sm"
+                            >
+                                <i class="fa fa-dot-circle-o"></i>
+                                Modifier
+                            </button>
+                            <button
+                                type="reset"
+                                onclick="windows.location='{{ URL::previous() }}'"
+                                class="btn btn-danger btn-sm"
+                            >
+                                <i class="fa fa-ban"></i> Annuler
+                            </button>
+                        </div>
+                    </form>
                     </div>
                 </div>
 

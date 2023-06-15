@@ -40,24 +40,25 @@
                                 <div class="form-group col-md-6"><label for="prenom" class=" form-control-label"><strong>Prénom</strong></label><input type="text" id="prenom" name="prenom" placeholder="Entrer votre prénom.." class="form-control" required></div>
                                 <div class="form-group col-md-6"><label for="email" class=" form-control-label"><strong>Adresse Email</strong></label><input type="email" id="email" name="email" placeholder="Enter une adresse email.." class="form-control" required required=""></div>
                                 <div class="form-group col-md-6"><label for="password" class=" form-control-label"><strong>Mot de passe</strong></label><input type="password" id="password" name="password" placeholder="Enter un mot de passe.." class="form-control" required></div>                          
-                                <div class="card-footer">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-success btn-sm"
-                                    >
-                                        <i class="fa fa-dot-circle-o"></i>
-                                        Ajouter
-                                    </button>
-                                    <button
-                                        type="reset"
-                                        class="btn btn-danger btn-sm"
-                                        onclick="windows.location='{{ URL::previous() }}'"
-                                    >
-                                        <i class="fa fa-ban"></i> Annuler
-                                    </button>
-                                </div>
-                            </form>
+                                
                         </div>
+                        <div class="card-footer">
+                            <button
+                                type="submit"
+                                class="btn btn-success btn-sm"
+                            >
+                                <i class="fa fa-dot-circle-o"></i>
+                                Ajouter
+                            </button>
+                            <button
+                                type="reset"
+                                class="btn btn-danger btn-sm"
+                                onclick="windows.location='{{ URL::previous() }}'"
+                            >
+                                <i class="fa fa-ban"></i> Annuler
+                            </button>
+                        </div>
+                    </form>
                         
                     </div>
                 </div>
