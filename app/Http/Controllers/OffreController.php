@@ -32,7 +32,7 @@ class OffreController extends Controller
         ->select('*', 'offres.id as identifiant')
         ->where('valide', 0)
         ->get();
-        return view('frontend.offre.offre_non_valide', compact('offre'));
+        return view('frontend.offre.index', compact('offre'));
     }
 
     /**
