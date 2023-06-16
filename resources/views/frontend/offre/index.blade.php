@@ -39,8 +39,6 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Entreprise</th>
-                                        <th>Site web de l'entreprise</th>
-                                        <th>Facebook de l'entreprise</th>
                                         <th>Titre de l'offre</th>
                                         <th>Description de l'offre</th>
                                         <th>Date limite</th>
@@ -52,14 +50,13 @@
                                     <tr>
                                         <td>{{ $offres->identifiant }}</td>
                                         <td>{{ $offres->entreprise }}</td>
-                                        <td>{{ $offres->site }}</td>
-                                        <td>{{ $offres->facebook }}</td>
                                         <td>{{ $offres->titre }}</td>
                                         <td>{{ $offres->description }}</td>
                                         <td>{{ $offres->date_lim }}</td>
                                         <td>
-                                            <a href="{{ route('offre.edit', $offres->identifiant) }}" type="button" class="btn btn-primary" style="color: white"><i class="fa fa-edit"></i>&nbsp; Modifier</a>
-                                            <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
+                                            <a href="{{ route('offre.edit', $offres->identifiant) }}" type="button" class="btn btn-primary" ><i class="fa fa-edit"></i>&nbsp; Modifier</a>
+                                            <a href="{{ route('offre.show', $offres->identifiant) }}" type="button" class="btn btn-info"><i class="fa fa-eye"></i>&nbsp; Aperçu</a>
+                                            <a type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</a>
                                         </td>
                                     </tr>
                                     @endforeach
