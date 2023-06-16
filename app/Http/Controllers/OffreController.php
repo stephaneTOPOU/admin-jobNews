@@ -65,7 +65,7 @@ class OffreController extends Controller
             'lien' => 'required|string',
             'lieu' => 'required|string',
             'date_limite' => 'required|string',
-            'valide' => 'required|integer'
+            
         ]);
 
         try {
@@ -137,7 +137,7 @@ class OffreController extends Controller
             'lien' => 'required|string',
             'lieu' => 'required|string',
             'date_limite' => 'required|string',
-            'valide' => 'required|integer'
+            
         ]);
 
         try {

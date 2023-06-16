@@ -70,7 +70,7 @@
                                     <div class="form-group col-md-3 mt-4"> <div class="card-body"> <label class="switch switch-3d switch-success mr-3"><input type="checkbox" class="switch-input" name="valide" data-key="{{$offres->id}}"  value="1" @if($offres->valide == 1) checked  @endif @if($offres->valide == 0) unchecked  @endif> <span class="switch-label"></span> <span class="switch-handle"></span></label></div> </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-dot-circle-o"></i>Ajouter</button>
+                            <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-dot-circle-o"></i>Modifier</button>
                             <button type="reset" onclick="windows.location='{{ URL::previous() }}'" class="btn btn-danger btn-sm"> <i class="fa fa-ban"></i> Annuler</button>
                         </div>
                 </form>     
