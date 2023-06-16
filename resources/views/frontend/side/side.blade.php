@@ -17,7 +17,11 @@
                 <h3 class="menu-title">Bannières & Sliders</h3><!-- /.menu-title -->
                 
                 <li>
-                    <a href="{{ route('banner.index') }}"> <i class="menu-icon fa fa-picture-o"></i>Bannière </a>
+                    <a href="{{ route('banner.index') }}"> <i class="menu-icon fa fa-picture-o"></i>Bannière d'accueil</a>
+                </li>
+
+                <li>
+                    <a href="{{ route('banner-search.index') }}"> <i class="menu-icon fa fa-picture-o"></i>Bannière de recherche </a>
                 </li>
 
                 <li class="menu-item-has-children dropdown">

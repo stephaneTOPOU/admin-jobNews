@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\BannerSearchController;
 use App\Http\Controllers\Slider1Controller;
 use App\Http\Controllers\Slider2Controller;
 use App\Http\Controllers\Slider_search1Controller;
@@ -33,6 +34,7 @@ Route::get('/', HomeController::class)->name('home')->middleware('auth');
 
 Route::middleware(['auth'])->group(function () {
 Route::resource('/banner', BannerController::class);
+Route::resource('/banner-search', BannerSearchController::class);
 Route::resource('/slider1', Slider1Controller::class);
 Route::resource('/slider2', Slider2Controller::class);
 Route::resource('/sliderSearch1', Slider_search1Controller::class);
