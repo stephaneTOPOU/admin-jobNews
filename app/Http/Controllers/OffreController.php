@@ -100,7 +100,8 @@ class OffreController extends Controller
      */
     public function show(Offre $offre)
     {
-        //
+        $offres = Offre::find($offre);
+        return view('frontend.offre.show',compact('offres'));
     }
 
     /**
