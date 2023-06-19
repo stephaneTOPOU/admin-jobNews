@@ -21,12 +21,12 @@ class CreateOffresTable extends Migration
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('linkedin')->nullable();
-            $table->string('titre')->nullable();
-            $table->string('description')->nullable();
-            $table->string('mission')->nullable();
-            $table->string('profil')->nullable();
-            $table->string('dossier')->nullable();
-            $table->string('lien')->nullable();
+            $table->longText('titre')->nullable();
+            $table->longText('description')->nullable();
+            $table->longText('mission')->nullable();
+            $table->longText('profil')->nullable();
+            $table->longText('dossier')->nullable();
+            $table->longText('lien')->nullable();
             $table->string('lieu')->nullable();
             $table->string('libelle')->nullable();
             $table->string('date_lim')->nullable();
