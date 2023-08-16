@@ -15,11 +15,11 @@ class CreateParametresTable extends Migration
     {
         Schema::create('parametres', function (Blueprint $table) {
             $table->id();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('email')->nullable();
             $table->string('numero')->nullable();
             $table->string('adresse')->nullable();
-            $table->string('localisation')->nullable();
+            $table->longText('localisation')->nullable();
             $table->timestamps();
         });
     }
