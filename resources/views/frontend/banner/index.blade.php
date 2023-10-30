@@ -50,7 +50,7 @@
                                     @foreach ($banners as $banner)
                                     <tr>
                                         <td>{{ $banner->id }}</td>
-                                        <td><img src="{{ asset('assets') }}/{{ $banner->image }}" alt="" width="60"></td>
+                                        <td><img src="https://jobsactu.com/assets/img/banner/{{ $banner->image }}" alt="" width="60"></td>
                                         <td>
                                             <a href="{{ route('banner.edit', $banner->id) }}" type="button" class="btn btn-primary" style="color : white"><i class="fa fa-edit"></i>&nbsp; Modifier</a>
                                             {{-- <form action="{{ route('banner.destroy',$banner->id) }}" method="POST">

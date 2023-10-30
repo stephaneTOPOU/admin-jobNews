@@ -5,9 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Cviebrock\EloquentSluggable\Sluggable;
+
 class Offre extends Model
 {
     use HasFactory;
+    use Sluggable;
+
+    public function Sluggable():array
+    {
+        return [
+
+            'slug_offres'=>[
+                'source'=> 'titre'
+            ]
+        ];
+    }
 
     protected $fillable = [
         'categorie_id',
@@ -17,6 +30,7 @@ class Offre extends Model
         'twitter',
         'linkedin',
         'titre',
+        'slug_offres',
         'description',
         'mission',
         'profil',

@@ -106,6 +106,16 @@ class CategorieController extends Controller
     {
         try {
             $categorie->delete();
+            if ($categorie == 1) {
+                $success = true;
+            } else {
+                $success = true;
+            }
+            //  return response
+            return response()->json([
+                'success' => $success,
+                'message' => $message,
+            ]);
             return redirect()->back()->with('success','Categorie supprimée avec succes');
         } catch (Exception $e) {
             return redirect()->back()->with('success',$e->getMessage());

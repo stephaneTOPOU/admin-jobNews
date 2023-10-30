@@ -120,6 +120,16 @@ class UserController extends Controller
     {
         try {
             $user->delete();
+            if ($user == 1) {
+                $success = true;
+            } else {
+                $success = true;
+            }
+            //  return response
+            return response()->json([
+                'success' => $success,
+                'message' => $message,
+            ]);
             return redirect()->back()->with('success','Image supprimée avec succes');
         } catch (Exception $e) {
             return redirect()->back()->with('success',$e->getMessage());

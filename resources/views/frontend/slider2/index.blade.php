@@ -45,9 +45,55 @@
                                     @foreach ($slider as $slider2 )
                                     <tr>
                                         <td>{{ $slider2->id }}</td>
-                                        <td><img src="{{ asset('assets') }}/{{ $slider2->image }}" alt="" width="60"></td>
+                                        <td><img src="https://jobsactu.com/assets/img/slider/{{ $slider2->image }}" alt="" width="60"></td>
                                         <td><a href="{{ route('slider2.edit', $slider2->id)}}" type="button" class="btn btn-primary" style="color: white"><i class="fa fa-edit"></i>&nbsp; Modifier</a>
-                                            <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
+                                            <button type="button" class="btn btn-danger" onclick="deleteData({{ $slider2->id }})"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
+                                        
+                                            <script type="text/javascript">
+                                                function deleteData(id) {
+                                                    swal.fire({
+                                                        title: "Delete?",
+                                                        icon: 'question',
+                                                        text: "Please ensure and then confirm!",
+                                                        type: "warning",
+                                                        showCancelButton: !0,
+                                                        confirmButtonText: "Yes, delete it!",
+                                                        cancelButtonText: "No, cancel!",
+                                                        reverseButtons: !0
+                                                    }).then(function (e) {
+                                            
+                                                        if (e.value === true) {
+                                                            
+                                                            $.ajax({
+                                                                type: 'POST',
+                                                                url: "{{url('slider2')}}/" + id,
+                                                                data: {
+                                                                    _token: "{{ csrf_token() }}",
+                                                                    _method: 'delete'
+                                                                },
+                                                                dataType: 'JSON',
+                                                                success: function (results) {
+                                                                    if (results.success === true) {
+                                                                        swal.fire("Done!", results.message, "success");
+                                                                        // refresh page after 2 seconds
+                                                                        setTimeout(function(){
+                                                                            location.reload();
+                                                                        },2000);
+                                                                    } else {
+                                                                        swal.fire("Error!", results.message, "error");
+                                                                    }
+                                                                }
+                                                            });
+                                            
+                                                        } else {
+                                                            e.dismiss;
+                                                        }
+                                            
+                                                    }, function (dismiss) {
+                                                        return false;
+                                                    })
+                                                }
+                                            </script>
                                         </td>
                                     </tr>
                                     @endforeach

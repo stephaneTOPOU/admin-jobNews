@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BannerController extends Controller
 {
@@ -42,11 +43,31 @@ class BannerController extends Controller
         
         try {
             $data = new Banner();
-            if ($request->image){
-                $filename = time().rand(1,50).'.'.$request->image->extension();
-                $img = $request->file('image')->storeAs('banner', $filename, 'public');
-                $data->image = $img;
-                }
+            // if ($request->image){
+            //     $filename = time().rand(1,50).'.'.$request->image->extension();
+            //     $img = $request->file('image')->storeAs('banner', $filename, 'public');
+            //     $data->image = $img;
+            //     }
+            if ($request->hasFile('image') ) {
+
+                //get filename with extension
+                $filenamewithextension = $request->file('image')->getClientOriginalName();
+        
+                //get filename without extension
+                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+        
+                //get file extension
+                $extension = $request->file('image')->getClientOriginalExtension();
+        
+                //filename to store
+                $filenametostore = $filename.'_'.uniqid().'.'.$extension;
+
+                //Upload File to external server
+                Storage::disk('ftp')->put($filenametostore, fopen($request->file('image'), 'r+'));
+
+                //Upload name to database
+                $data->image = $filenametostore;
+            }
                 $data->save();
                 return redirect()->back()->with('success','Nouvelle image ajoutée avec succes');
         } catch (Exception $e) {
@@ -92,10 +113,30 @@ class BannerController extends Controller
         
         try {
             $data = Banner::find($banner);
-            if ($request->image){
-                $filename = time().rand(1,50).'.'.$request->image->extension();
-                $img = $request->file('image')->storeAs('banner', $filename, 'public');
-                $data->image = $img;
+            // if ($request->image){
+            //     $filename = time().rand(1,50).'.'.$request->image->extension();
+            //     $img = $request->file('image')->storeAs('banner', $filename, 'public');
+            //     $data->image = $img;
+            // }
+            if ($request->hasFile('image') ) {
+
+                //get filename with extension
+                $filenamewithextension = $request->file('image')->getClientOriginalName();
+        
+                //get filename without extension
+                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+        
+                //get file extension
+                $extension = $request->file('image')->getClientOriginalExtension();
+        
+                //filename to store
+                $filenametostore = $filename.'_'.uniqid().'.'.$extension;
+
+                //Upload File to external server
+                Storage::disk('ftp')->put($filenametostore, fopen($request->file('image'), 'r+'));
+
+                //Upload name to database
+                $data->image = $filenametostore;
             }
             $data->update();
             return redirect()->back()->with('success','Image modifiée avec succes');

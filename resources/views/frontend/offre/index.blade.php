@@ -56,7 +56,53 @@
                                         <td>
                                             <a href="{{ route('offre.edit', $offres->identifiant) }}" type="button" class="btn btn-primary" ><i class="fa fa-edit"></i>&nbsp; Modifier</a>
                                             <a href="{{ route('offre.show', $offres->identifiant) }}" type="button" class="btn btn-info"><i class="fa fa-eye"></i>&nbsp; Aperçu</a>
-                                            <a type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</a>
+                                            <a type="button" class="btn btn-danger" onclick="deleteData({{ $offres->identifiant }})"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</a>
+                                            
+                                            <script type="text/javascript">
+                                                function deleteData(identifiant) {
+                                                    swal.fire({
+                                                        title: "Delete?",
+                                                        icon: 'question',
+                                                        text: "Please ensure and then confirm!",
+                                                        type: "warning",
+                                                        showCancelButton: !0,
+                                                        confirmButtonText: "Yes, delete it!",
+                                                        cancelButtonText: "No, cancel!",
+                                                        reverseButtons: !0
+                                                    }).then(function (e) {
+                                            
+                                                        if (e.value === true) {
+                                                            
+                                                            $.ajax({
+                                                                type: 'POST',
+                                                                url: "{{url('offre')}}/" + identifiant,
+                                                                data: {
+                                                                    _token: "{{ csrf_token() }}",
+                                                                    _method: 'delete'
+                                                                },
+                                                                dataType: 'JSON',
+                                                                success: function (results) {
+                                                                    if (results.success === true) {
+                                                                        swal.fire("Done!", results.message, "success");
+                                                                        // refresh page after 2 seconds
+                                                                        setTimeout(function(){
+                                                                            location.reload();
+                                                                        },2000);
+                                                                    } else {
+                                                                        swal.fire("Error!", results.message, "error");
+                                                                    }
+                                                                }
+                                                            });
+                                            
+                                                        } else {
+                                                            e.dismiss;
+                                                        }
+                                            
+                                                    }, function (dismiss) {
+                                                        return false;
+                                                    })
+                                                }
+                                            </script>
                                         </td>
                                     </tr>
                                     @endforeach

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Slider2;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Slider2Controller extends Controller
 {
@@ -42,13 +43,33 @@ class Slider2Controller extends Controller
         
         try {
             $data = new Slider2();
-            if ($request->image){
-                $filename = time().rand(1,50).'.'.$request->image->extension();
-                $img = $request->file('image')->storeAs('slider', $filename, 'public');
-                $data->image = $img;
-                $data->save();
-                return redirect()->back()->with('success','Nouvelle image ajoutée avec succes');
+            // if ($request->image){
+            //     $filename = time().rand(1,50).'.'.$request->image->extension();
+            //     $img = $request->file('image')->storeAs('slider', $filename, 'public');
+            //     $data->image = $img;
+            // }
+            if ($request->hasFile('image') ) {
+
+                //get filename with extension
+                $filenamewithextension = $request->file('image')->getClientOriginalName();
+        
+                //get filename without extension
+                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+        
+                //get file extension
+                $extension = $request->file('image')->getClientOriginalExtension();
+        
+                //filename to store
+                $filenametostore = $filename.'_'.uniqid().'.'.$extension;
+
+                //Upload File to external server
+                Storage::disk('ftp1')->put($filenametostore, fopen($request->file('image'), 'r+'));
+
+                //Upload name to database
+                $data->image = $filenametostore;
             }
+            $data->save();
+                return redirect()->back()->with('success','Nouvelle image ajoutée avec succes');
         } catch (Exception $e) {
             return redirect()->back()->with('success',$e->getMessage());
         }
@@ -92,13 +113,33 @@ class Slider2Controller extends Controller
             
             try {
                 $data = Slider2::find($slider2);
-                if ($request->image){
-                    $filename = time().rand(1,50).'.'.$request->image->extension();
-                    $img = $request->file('image')->storeAs('slider', $filename, 'public');
-                    $data->image = $img;
-                    $data->update();
-                    return redirect()->back()->with('success','Image modifiée avec succes');
+                // if ($request->image){
+                //     $filename = time().rand(1,50).'.'.$request->image->extension();
+                //     $img = $request->file('image')->storeAs('slider', $filename, 'public');
+                //     $data->image = $img;
+                // }
+                if ($request->hasFile('image') ) {
+
+                    //get filename with extension
+                    $filenamewithextension = $request->file('image')->getClientOriginalName();
+            
+                    //get filename without extension
+                    $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+            
+                    //get file extension
+                    $extension = $request->file('image')->getClientOriginalExtension();
+            
+                    //filename to store
+                    $filenametostore = $filename.'_'.uniqid().'.'.$extension;
+    
+                    //Upload File to external server
+                    Storage::disk('ftp1')->put($filenametostore, fopen($request->file('image'), 'r+'));
+    
+                    //Upload name to database
+                    $data->image = $filenametostore;
                 }
+                $data->update();
+                    return redirect()->back()->with('success','Image modifiée avec succes');
             } catch (Exception $e) {
                 return redirect()->back()->with('success',$e->getMessage());
             }
@@ -114,6 +155,16 @@ class Slider2Controller extends Controller
     {
         try {
             $slider2->delete();
+            if ($slider2 == 1) {
+                $success = true;
+            } else {
+                $success = true;
+            }
+            //  return response
+            return response()->json([
+                'success' => $success,
+                'message' => $message,
+            ]);
             return redirect()->back()->with('success','Image supprimée avec succes');
         } catch (Exception $e) {
             return redirect()->back()->with('success',$e->getMessage());

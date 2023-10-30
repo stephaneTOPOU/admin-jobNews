@@ -50,7 +50,7 @@
                                     @foreach ($bannerSearches as $bannerSearch)
                                     <tr>
                                         <td>{{ $bannerSearch->id }}</td>
-                                        <td><img src="{{ asset('assets') }}/{{ $bannerSearch->image }}" alt="" width="60"></td>
+                                        <td><img src="https://jobsactu.com/assets/img/banner/{{ $bannerSearch->image }}" alt="" width="60"></td>
                                         <td>
                                             <a href="{{ route('banner-search.edit', $bannerSearch->id) }}" type="button" class="btn btn-primary" style="color : white"><i class="fa fa-edit"></i>&nbsp; Modifier</a>
                                             {{-- <form action="{{ route('banner.destroy',$banner->id) }}" method="POST">
@@ -128,7 +128,7 @@
                                                             
                                                             $.ajax({
                                                                 type: 'POST',
-                                                                url: "{{url('banner')}}/" + id,
+                                                                url: "{{url('banner-search')}}/" + id,
                                                                 data: {
                                                                     _token: "{{ csrf_token() }}",
                                                                     _method: 'delete'
